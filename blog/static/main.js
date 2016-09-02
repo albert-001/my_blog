@@ -1,5 +1,26 @@
 function mainPageOnLoad() {
-    getPostsOnPage(1);
+    let page = 1;
+    let pages = 2;
+    $("#curr_page").text(page+'/'+pages);
+    getPostsOnPage(page);
+    $("a#prev_page").click(function(event){
+        event.preventDefault();
+        console.log(event)
+        if(page > 1){
+            page = page - 1;
+            $("#curr_page").text(page+'/'+pages);
+            getPostsOnPage(page);
+        }
+    });
+    $("a#next_page").click(function(event){
+        event.preventDefault();
+        console.log(event)
+        if(page < pages){
+            page = page + 1;
+            $("#curr_page").text(page+'/'+pages);
+            getPostsOnPage(page);
+        }
+    });
 }
 
 function getPostsOnPage(page_number) {
@@ -7,17 +28,20 @@ function getPostsOnPage(page_number) {
     async:false,
     data:null,
     success:function(d){
-        let json_test_str = '{"data": [{"content": "my fifth post", "date": "2016-08-29T02:51:11.082Z", "title": "my fifth post"}, {"content": "my fourth post", "date": "2016-08-29T02:50:03.440Z", "title": "my fourth post"}, {"content": "my third post", "date": "2016-08-29T02:50:03.310Z", "title": "my third post"}, {"content": "my second post", "date": "2016-08-29T02:50:03.240Z", "title": "my second post"}, {"content": "my first post", "date": "2016-08-29T02:50:03.158Z", "title": "my first post"}]}'
-        let r = JSON.parse(d);
-        let posts = r.data;
-        showPosts(posts);},
+        showPosts(d);},
     error:function(){console.log("error:failed to get data in getActiveAlarmsData");}
    });
 }
 
 function showPosts(posts) {
-    for(let post of posts) {
-        console.log(post)
+    for(let i=0; i<posts.length; i++) {
+        $("#blog"+i).show();
+        $(".blog_header").eq(i).text(posts[i].title);
+        $(".blog_meta").eq(i).text(posts[i].date);
+        $(".blog_content").eq(i).text(posts[i].content);
+    }
+    for(let i=posts.length; i<5; i++) {
+        $("#blog"+i).hide();
     }
 }
 

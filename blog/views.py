@@ -2,21 +2,27 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from blog.models import Post
 
+total_posts = 0
+total_pages = 1
+posts_per_page = 5
+
 # Create your views here.
 def post(request):
     return render(request, 'myblog_static.html', {})
 
 def page(request, page_number):
-    posts_per_page = 5
-    post_count = Post.objects.count()
-    page_count = int(post_count) / int(posts_per_page)
-    if page_number > page_count:
-        page_number = page_count
+    total_posts = Post.objects.count()
+    total_pages = int(int(total_posts)/int(posts_per_page)) + 1
+    page_number = int(page_number)
+    if page_number > total_pages:
+        page_number = total_pages
     page_start = posts_per_page*(page_number-1)
-    if page_number == page_count:
-        page_end = post_count - posts_per_page*(page_number-1)
+    if page_number == total_pages:
+        page_end = total_posts
     else:
         page_end = posts_per_page*(page_number)
+    print("page_start:%d" % page_start)
+    print("page_end:%d" % page_end)
     posts = Post.objects.order_by('-date')[page_start:page_end]
     response_data = []
     for post in posts:
