@@ -1,3 +1,5 @@
+var posts_per_page = 6
+
 function mainPageOnLoad() {
     let page = 1;
     let pages = 2;
@@ -5,7 +7,6 @@ function mainPageOnLoad() {
     getPostsOnPage(page);
     $("a#prev_page").click(function(event){
         event.preventDefault();
-        console.log(event)
         if(page > 1){
             page = page - 1;
             $("#curr_page").text(page+'/'+pages);
@@ -14,7 +15,6 @@ function mainPageOnLoad() {
     });
     $("a#next_page").click(function(event){
         event.preventDefault();
-        console.log(event)
         if(page < pages){
             page = page + 1;
             $("#curr_page").text(page+'/'+pages);
@@ -40,7 +40,7 @@ function showPosts(posts) {
         $(".blog_meta").eq(i).text(posts[i].date);
         $(".blog_content").eq(i).text(posts[i].content);
     }
-    for(let i=posts.length; i<5; i++) {
+    for(let i=posts.length; i<posts_per_page; i++) {
         $("#blog"+i).hide();
     }
 }

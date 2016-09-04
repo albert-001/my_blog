@@ -4,7 +4,7 @@ from blog.models import Post
 
 total_posts = 0
 total_pages = 1
-posts_per_page = 5
+posts_per_page = 6
 
 # Create your views here.
 def post(request):
@@ -21,8 +21,6 @@ def page(request, page_number):
         page_end = total_posts
     else:
         page_end = posts_per_page*(page_number)
-    print("page_start:%d" % page_start)
-    print("page_end:%d" % page_end)
     posts = Post.objects.order_by('-date')[page_start:page_end]
     response_data = []
     for post in posts:
