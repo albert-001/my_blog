@@ -158,6 +158,7 @@ div.blog_meta {
 
 article > p {
 	padding: 5px 10px;
+	min-height: 150px;
 }
 
 article > footer {
@@ -201,3 +202,52 @@ body > footer {
 	padding: 10px;
 	background-color: white;
 }
+
+
+
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 800px) {
+  	#content {
+  		width: 100%;
+  		margin: 5px auto;
+  	}
+
+  	article, content, aside {
+  		width: 100%;
+  		margin: 5px auto;
+  	}
+
+  	aside {
+  		clear: both;
+  	}
+
+  	nav {
+  		display: none;
+  	}
+
+	#logo {
+		margin: auto;
+	}
+
+	hgroup {
+		display: none;
+	}
+
+	article > footer {
+	    width: 100%;
+	    height: 20px;
+	}
+
+	article > footer > a {
+		display: inline-block;
+		width: 60px;
+		height: 20px;
+		line-height: 20px;
+		background-color: rgb(229, 234, 237);
+		text-align: center;
+	    margin-right: 5px;
+	    float: right;
+	}
+  }
