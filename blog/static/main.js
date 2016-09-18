@@ -1,8 +1,8 @@
 var posts_per_page = 6
 
 function mainPageOnLoad() {
-    let page = 1;
-    let pages = 2;
+    var page = 1;
+    var pages = 2;
     $("#curr_page").text(page+'/'+pages);
     getPostsOnPage(page);
     $("a#prev_page").click(function(event){
@@ -34,14 +34,14 @@ function getPostsOnPage(page_number) {
 }
 
 function showPosts(posts) {
-    for(let i=0; i<posts.length; i++) {
+    for(var i=0; i<posts.length; i++) {
         $("#blog"+i).show();
         $(".blog_header").eq(i).text(posts[i].title);
         $(".blog_meta").eq(i).text(posts[i].date);
         $(".blog_content").eq(i).text(posts[i].content);
     }
-    for(let i=posts.length; i<posts_per_page; i++) {
-        $("#blog"+i).hide();
+    for(var j=posts.length; j<posts_per_page; j++) {
+        $("#blog"+j).hide();
     }
 }
 

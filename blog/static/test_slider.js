@@ -7,7 +7,7 @@ function init_chart() {
     $(".slider_tile").eq(0).css("background-color", "black")
     $("#slider_tiles_group a").on("click", function(event){
         event.preventDefault();
-        let slide_index = $(event.target).data("slide-index");
+        var slide_index = $(event.target).data("slide-index");
         show_chart(slide_index);
     })
     $("#slider_container").on("mouseover", slide_end);
@@ -19,7 +19,7 @@ function init_chart() {
 
 function show_chart(id) {
     $("#slider_item_group").animate({"left": "-"+(id-1)*800+"px"}, "slow")
-    for (let i = 1; i <= nSlideCount; i++) {
+    for (var i = 1; i <= nSlideCount; i++) {
         if(i==id){
             $(".slider_tile").eq(i-1).css("background-color", "black")
         } else {
