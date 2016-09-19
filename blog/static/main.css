@@ -108,7 +108,7 @@ nav a:active {
 	color: black;
 }
 
-div.caret {
+.caret {
 	width: 0;
   	height: 0;
   	border-left: 3px solid transparent;
@@ -274,13 +274,56 @@ body > footer {
 
   	.toggle_menu {
   		display: inline-block;
+  		box-sizing: border-box;
    		height: 30px;
-  		width: 30px;
+   		width: 100%;
   		background-color: black;
   		color: white;
-  		text-align: center;
-  		font-size: 20px;
+  		font-size: 24px;
+  		padding-left: 10px;
   	}
+
+  	.menu {
+  		background-color: black;
+  	}
+
+  	.menu a {
+  		font-weight: lighter;
+  	}
+
+  	.menu a:link {
+		color: white;
+	}
+
+	.menu a:visited {
+		color: white;
+	}
+
+	.menu a:hover {
+		background-color: white;
+		color: black;
+	}
+
+	.submenu {
+		background-color: black;
+	}
+
+	.submenu a {
+		font-weight: lighter;
+	}
+
+	.submenu > li > a {
+	    color: white;
+	}
+
+	.submenu > li > a:hover {
+		color: black;
+	}
+
+	.caret {
+		border-top: 3px solid white;
+		margin-left: 20px;
+	}
 
   	nav li {
 		display: block;
