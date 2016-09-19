@@ -55,13 +55,13 @@ function getPostsOnPage(page_number) {
 }
 
 function showPosts(posts) {
-    for(var i=0; i<posts.length; i++) {
+    for(var i=1; i<=posts.length; i++) {
         $("#blog"+i).show();
-        $(".blog_header").eq(i).text(posts[i].title);
-        $(".blog_meta").eq(i).text(posts[i].date);
-        $(".blog_content").eq(i).text(posts[i].content);
+        $("#blog"+i+" .blog_header").text(posts[i-1].title);
+        $("#blog"+i+" .blog_meta").text(posts[i-1].date);
+        $("#blog"+i+" .blog_content").text(posts[i-1].content);
     }
-    for(var j=posts.length; j<posts_per_page; j++) {
+    for(var j=posts.length+1; j<=posts_per_page; j++) {
         $("#blog"+j).hide();
     }
 }
