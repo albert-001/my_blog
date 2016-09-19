@@ -21,6 +21,16 @@ function mainPageOnLoad() {
             getPostsOnPage(page);
         }
     });
+    $(".toggle_menu").click(function(event){
+        event.preventDefault();
+        $("nav > ul").slideToggle('slow');
+        if($(".toggle_menu").html() == "=") {
+            $(".toggle_menu").html("x");
+        } else {
+            $(".toggle_menu").html("=");
+        }
+    });
+    setMenuHandler();
 }
 
 function getPostsOnPage(page_number) {
@@ -43,6 +53,28 @@ function showPosts(posts) {
     for(var j=posts.length; j<posts_per_page; j++) {
         $("#blog"+j).hide();
     }
+}
+
+function setMenuHandler() {
+        $("nav ul li a").click(function(event){
+        event.preventDefault();
+        var target = $(event.target).attr("href");
+        if(target == '#html'){
+
+        }else if(target == '#css'){
+
+        }else if(target == '#javascript'){
+
+        }else if(target == '#frameworks'){
+
+        }else if(target == '#performance'){
+
+        }else if(target == '#courses'){
+
+        }else if(target == '#contact'){
+
+        }
+    });
 }
 
 $(document).ready(mainPageOnLoad);
