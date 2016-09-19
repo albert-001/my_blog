@@ -4,22 +4,33 @@ function mainPageOnLoad() {
     var page = 1;
     var pages = 2;
     $("#curr_page").text(page+'/'+pages);
+    $("#prev_page").hide()
     getPostsOnPage(page);
     $("a#prev_page").click(function(event){
         event.preventDefault();
         if(page > 1){
             page = page - 1;
             $("#curr_page").text(page+'/'+pages);
-            getPostsOnPage(page);
+            $("#prev_page").show()
+        } 
+        if(page == 1) {
+            $("#prev_page").hide()
+            $("#next_page").show()
         }
+        getPostsOnPage(page);
     });
     $("a#next_page").click(function(event){
         event.preventDefault();
         if(page < pages){
             page = page + 1;
             $("#curr_page").text(page+'/'+pages);
-            getPostsOnPage(page);
+            $("#next_page").show()
+        } 
+        if(page == pages) {
+            $("#next_page").hide()
+            $("#prev_page").show()
         }
+        getPostsOnPage(page);
     });
     $(".toggle_menu").click(function(event){
         event.preventDefault();
