@@ -175,7 +175,8 @@ nav > ul > li:hover > ul.submenu {
 
 article {
 	box-sizing: border-box;
-	width: 48%;
+	width: 48%; /*graceful degration. compatible with old browsers*/
+	width: calc(50% - 10px);
 	height: 300px;
 	display: inline-block;
 	float: left;
