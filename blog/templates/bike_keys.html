@@ -13,11 +13,16 @@
         var keys = [["65270666","8106"],["417052","0864"],["382630","1392"],
                     ["354840","8824"],["336976","1267"],["163166","0610"],
                     ["326216","6721"]]
-        var key_map = new Map(keys);
+        var key_map = Object.create(null);
+        for (var i=0; i<keys.length; i++) {
+            //console.log(i)
+            key_map[keys[i][0]]=keys[i][1]
+        }
+        //console.log(key_map)
         $("#btn_key").on("click", function(){
             var key = $("#txt_number").val()
-            if(key_map.has(key)){
-                $("#txt_key").text(key_map.get(key));
+            if(key in key_map){
+                $("#txt_key").text(key_map[key]);
             } else {
                 $("#txt_key").text("车牌不存在");
             }
