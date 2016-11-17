@@ -20,5 +20,6 @@ from . import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blog.urls')),
-    url(r'^bike/', views.bike_key),
+    url(r'^bike/keys/', views.keys),
+    url(r'^bike/$', views.bike_key),
 ]
