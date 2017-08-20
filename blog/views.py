@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from blog.models import Post
 
 total_posts = 0
@@ -9,6 +9,11 @@ posts_per_page = 6
 # Create your views here.
 def post(request):
     return render(request, 'myblog_static.html', {})
+
+def article(request, article_number):
+    post = Post.objects.get(id=article_number)
+    response_data = {'id': post.id, 'title': post.title, 'date': post.date, 'content': post.content}
+    return JsonResponse(response_data)
 
 def page(request, page_number):
     total_posts = Post.objects.count()
@@ -24,5 +29,5 @@ def page(request, page_number):
     posts = Post.objects.order_by('-date')[page_start:page_end]
     response_data = []
     for post in posts:
-        response_data.append({'title': post.title, 'content': post.content, 'date': post.date})
+        response_data.append({'id': post.id, 'title': post.title, 'date': post.date, 'content': post.content})
     return JsonResponse(response_data, safe=False)
