@@ -14,3 +14,11 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
+
+class News(models.Model):
+	date = models.DateTimeField(default=timezone.now)
+	liner = models.CharField(max_length=100)
+
+class Link(models.Model):
+	text = models.CharField(max_length=100)
+	url = models.CharField(max_length=100)
