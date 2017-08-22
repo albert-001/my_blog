@@ -38,6 +38,6 @@ def news(request):
     return JsonResponse(response_data, safe=False)
 
 def links(request):
-    links = Link.objects
+    links = Link.objects.all()
     response_data = [{'id': link.id, 'text':link.text, 'url':link.url} for link in links]
     return JsonResponse(response_data, safe=False)
