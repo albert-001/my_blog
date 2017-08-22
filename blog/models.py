@@ -9,7 +9,6 @@ class Post(models.Model):
 	date = models.DateTimeField(default=timezone.now)
 
 	def publish(self):
-		self.date = timezone.now()
 		self.save()
 
 	def __str__(self):
@@ -19,6 +18,18 @@ class News(models.Model):
 	date = models.DateTimeField(default=timezone.now)
 	liner = models.CharField(max_length=100)
 
+	def publish(self):
+		self.save()
+
+	def __str__(self):
+		return self.liner
+
 class Link(models.Model):
 	text = models.CharField(max_length=100)
 	url = models.CharField(max_length=100)
+
+	def publish(self):
+		self.save()
+
+	def __str__(self):
+		return self.text
