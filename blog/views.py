@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from blog.models import Post
+from blog.models import Post, News, Link
 
 total_posts = 0
 total_pages = 1
@@ -30,4 +30,14 @@ def page(request, page_number):
     response_data = []
     for post in posts:
         response_data.append({'id': post.id, 'title': post.title, 'date': post.date, 'content': post.content})
+    return JsonResponse(response_data, safe=False)
+
+def news(request):
+    newss = News.objects.order_by('-date')
+    response_data = [{'id': news.id, 'date':news.date, 'liner':news.liner} for news in newss]
+    return JsonResponse(response_data, safe=False)
+
+def links(request):
+    links = Link.objects
+    response_data = [{'id': link.id, 'text':link.text, 'url':link.url} for link in links]
     return JsonResponse(response_data, safe=False)
